@@ -95,7 +95,20 @@
         transform: translateY(100vh);
       }
     }
-	
+
+	  .popup-overlay.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+	  
 	h1 {
       color: lightgreen;
     }   
@@ -341,9 +354,13 @@ if (distance < 0 && !confettiInitialized) {
     popupOverlay.style.display = "block";
   });
 
-  function closePopup() {
-    var popupOverlay = document.getElementById('popupOverlay');
+function closePopup() {
+  var popupOverlay = document.getElementById('popupOverlay');
+  popupOverlay.classList.add('fade-out'); // Add fade-out animation
+  setTimeout(function() {
     popupOverlay.style.display = 'none';
+    popupOverlay.classList.remove('fade-out'); // Remove fade-out class after animation
+  }, 500); // Adjust the timeout to match the animation duration
 }
 </script>
 
