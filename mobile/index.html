@@ -306,7 +306,7 @@ if (distance < 0 && !confettiInitialized) {
   initializeConfetti(); // Initialize confetti only once
   confettiInitialized = true;
 }
-  }, 1); // Update every 1 millisecond
+  }, 50); // Update every 50 milliseconds cuz mobile devices are lame
 
   function initializeConfetti() {
     const colors = ['#9142ff', '#2aff54', '#ffde37', '#ff3737', '#4385ff'];
