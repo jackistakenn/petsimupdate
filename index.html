@@ -310,18 +310,18 @@ if (distance < 0 && !confettiInitialized) {
   clearInterval(x);
   const countdownElement = document.getElementById("countdown");
   countdownElement.innerHTML = "Update Out!";
-  countdownElement.style.color = "#8eff8e"; // Light green color
-  countdownElement.style.cursor = "pointer"; // Make it clickable
+  countdownElement.style.color = "#8eff8e";
+  countdownElement.style.cursor = "pointer"; 
   countdownElement.addEventListener("click", function() {
     window.location.href = "https://www.roblox.com/games/8737899170/";
   });
-  countdownElement.classList.add("text-glow"); // Add glow animation
-  document.getElementById("milliseconds").style.display = "none"; // Hide milliseconds
-  document.querySelector('.confetti-container').style.display = 'block'; // Show confetti
-  initializeConfetti(); // Initialize confetti only once
+  countdownElement.classList.add("text-glow"); 
+  document.getElementById("milliseconds").style.display = "none";
+  document.querySelector('.confetti-container').style.display = 'block';
+  initializeConfetti();
   confettiInitialized = true;
 }
-  }, 1); // Update every 1 millisecond
+  }, 10);
 
   function initializeConfetti() {
     const colors = ['#9142ff', '#2aff54', '#ffde37', '#ff3737', '#4385ff'];
@@ -357,11 +357,11 @@ if (distance < 0 && !confettiInitialized) {
 
 function closePopup() {
   var popupOverlay = document.getElementById('popupOverlay');
-  popupOverlay.classList.add('fade-out'); // Add fade-out animation
+  popupOverlay.classList.add('fade-out'); 
   setTimeout(function() {
     popupOverlay.style.display = 'none';
-    popupOverlay.classList.remove('fade-out'); // Remove fade-out class after animation
-  }, 500); // Adjust the timeout to match the animation duration
+    popupOverlay.classList.remove('fade-out'); 
+  }, 500); 
 }
 </script>
 
