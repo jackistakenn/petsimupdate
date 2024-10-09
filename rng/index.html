@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@605&display=swap" rel="stylesheet">
-  <title>🕑 Pet Simulator 99 Update Countdown 🕑</title>
+  <title>🕑 Pet Simulator RNG Release Countdown 🕑</title>
   <style>
     body {
       font-family: 'Fredoka', sans-serif;
@@ -145,8 +145,13 @@
 <div class="confetti-container"></div>
 
 <script>
-  const countDownDate = new Date("October 9, 2024 20:00:00 GMT+0100").getTime();
+  const countDownDate = new Date("October 9, 2024 20:10:00 GMT+0100").getTime();
   let confettiInitialized = false;
+
+  // Check if the countdown has already ended
+  if (localStorage.getItem('countdownEnded')) {
+    window.location.href = "https://petrng.com"; // Redirect immediately if the countdown has ended
+  }
 
   const x = setInterval(function() {
     const now = new Date().getTime();
@@ -174,6 +179,9 @@
       document.querySelector('.confetti-container').style.display = 'block';
       initializeConfetti();
       confettiInitialized = true;
+
+      // Set flag in localStorage to indicate countdown has ended
+      localStorage.setItem('countdownEnded', 'true');
     }
   }, 10);
 
