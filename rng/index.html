@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta property="og:title" content="🕑 Pet Simulator RNG Release Countdown 🕑" />
+  <meta property="og:description" content="Pet Simulator RNG Release Countdown! Made with ♥ by fytage!" />
+  <meta property="og:image" content="https://i.imgur.com/22feJ49.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🕑 Pet Simulator RNG Release Countdown 🕑" />
+  <meta name="twitter:description" content="Pet Simulator RNG Release Countdown! Made with ♥ by fytage!" />
+  <meta name="twitter:image" content="https://i.imgur.com/22feJ49.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@605&display=swap" rel="stylesheet">
+  <title>🕑 Pet Simulator 99 Update Countdown 🕑</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    #title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3em;
+      color: white;
+      text-align: center;
+      margin-top: 20%;
+    }
+
+    #countdown, #milliseconds {
+      text-align: center;
+      font-size: 2em;
+      color: white;
+    }
+
+    #button, #discordButton {
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    #button img, #discordButton img {
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+
+<video id="video-background" autoplay loop muted playsinline>
+  <source src="1009.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+<div id="title">Pet RNG Release!</div>
+<div id="countdown"></div>
+<div id="milliseconds"></div>
+
+<a id="button" href="https://fytage.github.io/website" target="_blank">
+  <img src="https://raw.githubusercontent.com/fytage/website/main/images/signature-white.png" alt="Signature">
+</a>
+
+<a id="discordButton" href="https://discord.gg/pet-simulator-news-1146582505693138954" target="_blank">
+  <img src="https://raw.githubusercontent.com/fytage/website/main/images/discordupd.png" alt="Discord">
+</a>
+
+<script>
+  const countDownDate = new Date("October 11, 2024 17:00:00 GMT+0100").getTime();
+
+  const x = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const milliseconds = Math.floor(distance % 1000);
+
+    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    document.getElementById("milliseconds").innerHTML = `${milliseconds}ms`;
+
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").innerHTML = "Update Out!";
+      document.getElementById("milliseconds").style.display = "none";
+    }
+  }, 10);
+</script>
+
+</body>
+</html>
