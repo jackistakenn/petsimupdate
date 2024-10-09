@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@605&display=swap" rel="stylesheet">
-  <title>🕑 Pet Simulator RNG Release Countdown 🕑</title>
+  <title>🕑 Pet Simulator 99 Update Countdown 🕑</title>
   <style>
     body {
       font-family: 'Fredoka', sans-serif;
@@ -76,46 +76,6 @@
       object-fit: cover;
     }
 
-    .confetti-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 9999;
-      display: none; /* Initially hide confetti */
-    }
-
-    .confetti {
-      width: 10px;
-      height: 10px;
-      background-color: transparent;
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      transform-origin: 50% 50%;
-      will-change: transform;
-      animation: confetti-fall linear infinite;
-    }
-
-    @keyframes confetti-fall {
-      to {
-        transform: translateY(100vh);
-      }
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 0 darkgreen; }
-      50% { text-shadow: 0 0 20px green; }
-      100% { text-shadow: 0 0 0 darkgreen; }
-    }
-
-    .text-glow {
-      animation: glow 2.5s infinite;
-    }
-
     @media only screen and (max-width: 768px) {
       #title {
         display: none;
@@ -142,16 +102,8 @@
   <img src="https://raw.githubusercontent.com/fytage/website/main/images/discordupd.png" alt="Discord">
 </a>
 
-<div class="confetti-container"></div>
-
 <script>
-  const countDownDate = new Date("October 9, 2024 20:10:00 GMT+0100").getTime();
-  let confettiInitialized = false;
-
-  // Check if the countdown has already ended
-  if (localStorage.getItem('countdownEnded')) {
-    window.location.href = "https://petrng.com"; // Redirect immediately if the countdown has ended
-  }
+  const countDownDate = new Date("October 9, 2024 20:00:00 GMT+0100").getTime();
 
   const x = setInterval(function() {
     const now = new Date().getTime();
@@ -162,10 +114,10 @@
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     const milliseconds = Math.floor(distance % 1000);
 
-    if (distance > 0) {
-      document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-      document.getElementById("milliseconds").innerHTML = `${milliseconds}ms`;
-    } else if (!confettiInitialized) {
+    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    document.getElementById("milliseconds").innerHTML = `${milliseconds}ms`;
+
+    if (distance < 0) {
       clearInterval(x);
       const countdownElement = document.getElementById("countdown");
       countdownElement.innerHTML = "Now Out!";
@@ -176,39 +128,23 @@
       });
       countdownElement.classList.add("text-glow"); 
       document.getElementById("milliseconds").style.display = "none";
-      document.querySelector('.confetti-container').style.display = 'block';
-      initializeConfetti();
-      confettiInitialized = true;
 
-      // Set flag in localStorage to indicate countdown has ended
-      localStorage.setItem('countdownEnded', 'true');
+      // Load the new scripts here
+      loadConfettiScripts();
     }
   }, 10);
 
-  function initializeConfetti() {
-    const colors = ['#9142ff', '#2aff54', '#ffde37', '#ff3737', '#4385ff'];
-    const confettiContainer = document.querySelector('.confetti-container');
+  function loadConfettiScripts() {
+    const script1 = document.createElement('script');
+    script1.src = "https://run.confettipage.com/here.js";
+    script1.setAttribute("data-confetticode", "U2FsdGVkX1+SHZ/5zF6MvE0o/IKYwjeKgppkvW+k8qznJJLcuGoE+kD1fWtWU8JtvMGt4Zgxw/yMwgrKOGFm1ijSuKGrliY+Q4t/ZxZfVoL87gjYKhOtdBDaThydAyoCtEK0kaWFNMqR6o47i0mesxvU2Eo3Lrzx1dxUCRInYXq6CFzhAbG4W9Wep0om6djvA1YGITalFBhO0lRfbqO7JErpXeb72zcLTtqBFS+aq+0uaAc46ljdf1a1A67hO6Zg59Uuih54v4Drf6XHxptIQkhFJnqAGBYpphLEhsdiP+qphCGhg/2d+61Wohrw2O5WavnL/kYC7ClKthtFIxocxlNG51dWdEBI88KLKK/w2WcpjrMHrmVrUeVp7ugF5oh4MFCzsODl1L0Lq4V5cg5Q6BAbiSSyT3fh8P/CtELoGjETfmtDgxkJZi6F1SzAacXpHmwPQsAWGl5HcjewpAzbhWDmKN9RZDRPQr5mOhz5F49Ayy4A4Jzk+Q7xH127vHHE9atGtOxqdgTAZyN/HzKaZW5xAtLcFfqnR646ppx4JoSwdftR7zziXzYZUO0nWxoUTrm1AMoDLJu6J0K+1v8MQWmvKiuWuirD7mYmKG4+UgI4+KhZvSeVtl8FLqkwuN6ddHNUFbdh3ziAHcokMdPOBYmPH0Gw5qKZM0OvSJ278JQ=";
+    document.body.appendChild(script1);
 
-    function createConfetti(animationDelay) {
-      const confetti = document.createElement('div');
-      confetti.classList.add('confetti');
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.left = Math.random() * 100 + 'vw';
-      confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-      confetti.style.animationDelay = animationDelay ? 0 : Math.random() * 2 + 's';
-      confettiContainer.appendChild(confetti);
-
-      confetti.addEventListener('animationiteration', () => {
-        confetti.remove();
-      });
-    }
-
-    for (let i = 0; i < 100; i++) {
-      createConfetti(0);
-    }
-    setInterval(createConfetti, 20);
+    const script2 = document.createElement('script');
+    script2.src = "https://run.confettipage.com/here.js";
+    script2.setAttribute("data-confetticode", "U2FsdGVkX1/b0hrpAcH0Qo6PivO9VTXEpSFW5SZ4UHoIY/GZouDtBE78BYuegel/m1FU+Br8iaba3rvHigAKqRwjmI01evG3nUvswa+Wx2+K4FYj+uS+uwPfVqjcI77bGYLaKK1wTqLC9vbrxXcNIWDGXusUzP0lkA4B9e/3demArQJcn/px6uQHRctl7bIRJxXz+zp3DuRCh8k1vYZAnEOMlnGOWQ9k86h7yqW2QNYftDR6m80bCUPtnM8nOGdu/GLiiq3k0W20KwQlWyNtTuZiDMihuDyt0RyKozumO3dMdjHCHoTFY/loPziRnhOJhXgiznf7F+Jcv+ZNCnwBskEF5F9XVy1Xirnvy1Hy1UecYra+38fQehybX8wGXGFYrsfvCKCaT12VHkkMQ3ggrgyg7milu/5wTxwHfd5aH73cllmIeoVOHe00FWvLTjO/QnHTJ+kjQhcs3/q7e8dNxm/8lABEhk4aHolbTFdEToKj1AgFo5pgbA0n4S1p4a8lEPUxIVEbiz+Iz8nP6xhSh3nAkePD6SQ6fCX72QOYepwSrCS2a3X1TiapKKl/MsTLc2zumqxY7KUWjAZsBbhDFqqFVLa88d2FuQs1x0p24hSYh+YsNkioZmEohcmMoHHTyQviV6NJpdzQCfIgTkvmnBHtGZJQQWwhTsar+1oOtSI=";
+    document.body.appendChild(script2);
   }
 </script>
-
 </body>
 </html>
