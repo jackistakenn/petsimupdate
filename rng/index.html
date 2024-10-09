@@ -137,6 +137,10 @@
   <img src="https://raw.githubusercontent.com/fytage/website/main/images/discordupd.png" alt="Discord">
 </a>
 
+  <div class="confetti-container">
+  <!-- Confetti elements will be dynamically added here -->
+</div>
+
 <script>
   const countDownDate = new Date("October 11, 2024 17:00:00 GMT+0100").getTime();
 
@@ -152,12 +156,46 @@
     document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     document.getElementById("milliseconds").innerHTML = `${milliseconds}ms`;
 
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("countdown").innerHTML = "Update Out!";
-      document.getElementById("milliseconds").style.display = "none";
-    }
+if (distance < 0 && !confettiInitialized) {
+  clearInterval(x);
+  const countdownElement = document.getElementById("countdown");
+  countdownElement.innerHTML = "Now Out!";
+  countdownElement.style.color = "#8eff8e";
+  countdownElement.style.cursor = "pointer"; 
+  countdownElement.addEventListener("click", function() {
+    window.location.href = "https://petrng.com";
+  });
+  countdownElement.classList.add("text-glow"); 
+  document.getElementById("milliseconds").style.display = "none";
+  document.querySelector('.confetti-container').style.display = 'block';
+  initializeConfetti();
+  confettiInitialized = true;
+}
   }, 10);
+
+  function initializeConfetti() {
+    const colors = ['#9142ff', '#2aff54', '#ffde37', '#ff3737', '#4385ff'];
+    const confettiContainer = document.querySelector('.confetti-container');
+
+    function createConfetti(animationDelay) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+      confetti.style.animationDelay = animationDelay ? 0 : Math.random() * 2 + 's';
+      confettiContainer.appendChild(confetti);
+
+      confetti.addEventListener('animationiteration', () => {
+        confetti.remove();
+      });
+    }
+
+    for (let i = 0; i < 100; i++) {
+      createConfetti(0);
+    }
+    setInterval(createConfetti, 20);
+  }
 </script>
 
 </body>
