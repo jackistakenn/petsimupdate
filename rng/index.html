@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="/rng/favicon.ico">
-  <meta property="og:title" content="🕑 Pet RNG Release Countdown 🕑" />
+  <meta property="og:title" content="🕑 Pets GO! Release Countdown 🕑" />
   <meta property="og:description" content="Pet Simulator RNG Release Countdown! Made with ♥ by fytage!" />
   <meta property="og:image" content="https://i.imgur.com/HHktHbL.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="🕑 Pet RNG Release Countdown 🕑" />
+  <meta name="twitter:title" content="🕑 Pets GO! Release Countdown 🕑" />
   <meta name="twitter:description" content="Pet Simulator RNG Release Countdown! Made with ♥ by fytage!" />
   <meta name="twitter:image" content="https://i.imgur.com/HHktHbL.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +36,7 @@ body {
   text-align: center;
   font-size: 100px;
   cursor: pointer;
+  z-index: 1002;
 }
 
 #milliseconds {
@@ -48,7 +49,6 @@ body {
   right: 20px;
   opacity: 0.6;
   cursor: pointer;
-  z-index: 1001;
 }
 
 #button img {
@@ -61,7 +61,6 @@ body {
   left: 20px;
   opacity: 0.7;
   cursor: pointer;
-  z-index: 1001;
 }
 
 #discordButton img {
@@ -150,15 +149,19 @@ video {
 .text-glow {
   animation: glow 2.5s infinite; /* Adjust the duration and iteration as needed */
 }
+
+#countdown.text-glow:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <video id="video-background" autoplay loop muted playsinline poster="fallback.png">
-    <source src="rngbg.webm" type="video/webm">
+  <video id="video-background" autoplay loop muted playsinline poster="https://petsimupdate.com/rng/fallback.png">
+    <source src="https://petsimupdate.com/rng/rngbg.webm" type="video/webm">
     Your browser does not support the video tag.
   </video>
 
-  <div id="title">Pets GO!</div>
+  <div id="title">Pets GO Release!</div>
   <div id="countdown"></div>
   <div id="milliseconds"></div>
 
@@ -255,7 +258,7 @@ const Confettiful = function (el) {
   this.el = el;
   this.containerEl = null;
 
-  this.confettiFrequency = 3;
+  this.confettiFrequency = 25;
   this.confettiColors = ['#fce18a', '#ff726d', '#b48def', '#f4306d'];
   this.confettiAnimations = ['slow', 'medium', 'fast'];
 
